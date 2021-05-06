@@ -139,9 +139,3 @@ Read it right-to-left: “x is a reference to an X that is const.”
 For example, if class X has a const member function such as inspect() const, it is okay to say x.inspect(). But if class X has a non-const member function called mutate(), it is an error if you say x.mutate().
 
 This is entirely symmetric with pointers to const, including the fact that the compiler does all the checking at compile-time, which means const doesn’t slow down your program and doesn’t require you to write extra test-cases to check things at runtime.
-## What do “X const& x” and “X const* p” mean?
-X const& x is equivalent to const X& x, and X const* x is equivalent to const X* x.
-
-Some people prefer the const-on-the-right style, calling it “consistent const” or, using a term coined by Simon Brand, “East const.” Indeed the “East const” style can be more consistent than the alternative: the “East const” style always puts the const on the right of what it constifies, whereas the other style sometimes puts the const on the left and sometimes on the right (for const pointer declarations and const member functions).
-
-With the “East const” style, a local variable that is const is defined with the const on the right: int const a = 42;. Similarly a static variable that is const is defined as static double const x = 3.14;. Basically every const ends up on the right of the thing it constifies, including the const that is required to be on the right: const pointer declarations and with a const member function.
