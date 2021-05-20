@@ -17,7 +17,7 @@ As an opposite example, suppose you wanted to create a function g() that accepte
 
 The lack of const in these functions tells the compiler that they are allowed to (but are not required to) change the caller’s std::string object. Thus they can pass their std::string to any of the f() functions, but only f3() (the one that receives its parameter “by value”) can pass its std::string to g1() or g2(). If f1() or f2() need to call either g() function, a local copy of the std::string object must be passed to the g() function; the parameter to f1() or f2() cannot be directly passed to either g() function. E.g.,
 + Error : 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -35,7 +35,7 @@ int main()
 }
  ```
  + Compiled :
- ```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -53,7 +53,7 @@ int main()
 }
 ```
 + Error : 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -71,7 +71,7 @@ int main()
 }
  ```
 + Conplied :
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -100,7 +100,7 @@ Conceptually you can imagine that const std::string, for example, is a different
 A member function that inspects (rather than mutates) its object.
 
 A const member function is indicated by a const suffix just after the member function’s parameter list. Member functions with a const suffix are called “const member functions” or “inspectors.” Member functions without a const suffix are called “non-const member functions” or “mutators.”
-```
+```cpp
 class Fred {
 public:
   void inspect() const;   // This member promises NOT to change *this
