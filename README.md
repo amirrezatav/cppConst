@@ -139,3 +139,39 @@ Read it right-to-left: “x is a reference to an X that is const.”
 For example, if class X has a const member function such as inspect() const, it is okay to say x.inspect(). But if class X has a non-const member function called mutate(), it is an error if you say x.mutate().
 
 This is entirely symmetric with pointers to const, including the fact that the compiler does all the checking at compile-time, which means const doesn’t slow down your program and doesn’t require you to write extra test-cases to check things at runtime.
+
+## Const member functions in C++
+The const member functions are the functions which are declared as constant in the program. The object called by these functions cannot be modified. It is recommended to use const keyword so that accidental changes to object are avoided.
+
+A const member function can be called by any type of object. Non-const functions can be called by non-const objects only.
+
+Here is the syntax of const member function in C++ language,
+
+datatype function_name const();
+Here is an example of const member function in C++,
+```cpp
+#include<iostream>
+using namespace std;
+class Demo {
+   int val;
+   public:
+   Demo(int x = 0) {
+      val = x;
+   }
+   int getValue() const {
+      return val;
+   }
+};
+int main() {
+   const Demo d(28);
+   Demo d1(8);
+   cout << "The value using object d : " << d.getValue();
+   cout << "\nThe value using object d1 : " << d1.getValue();
+   return 0;
+}
+```
+Output: 
+```
+The value using object d : 28
+The value using object d1 : 8
+```
