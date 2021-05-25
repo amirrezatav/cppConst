@@ -175,3 +175,40 @@ Output:
 The value using object d : 28
 The value using object d1 : 8
 ```
+
+## mutable
+Mutable data members are those members whose values can be changed in runtime even if the object is of constant type. It is just opposite to constant.
+
+Sometimes logic required to use only one or two data member as a variable and another one as a constant to handle the data. In that situation, mutability is very helpful concept to manage classes.
+
+```cpp
+#include <iostream>
+using namespace std;
+code
+class Test {
+   public:
+      int a;
+   mutable int b;
+   Test(int x=0, int y=0) {
+      a=x;
+      b=y;
+   }
+   void seta(int x=0) {
+      a = x;
+   }
+   void setb(int y=0) {
+      b = y;
+   }
+   void disp() {
+      cout<<endl<<"a: "<<a<<" b: "<<b<<endl;
+   }
+};
+int main() {
+   const Test t(10,20);
+   cout<<t.a<<" "<<t.b<<"\n";
+   // t.a=30; //Error occurs because a can not be changed, because object is constant.
+   t.b=100; //b still can be changed, because b is mutable.
+   cout<<t.a<<" "<<t.b<<"\n";
+   return 0;
+}
+```
